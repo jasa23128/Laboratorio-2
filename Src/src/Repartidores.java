@@ -1,18 +1,22 @@
 public class Repartidores extends Personas {
-    private String cargo; // Ej: Repartidor, Cocinero
+    private double calificacion;
 
-    public Repartidores(String id, String nombre, String telf, String cargo) {
+    public Repartidores(String id, String nombre, String telf, double calificacion) {
         super(id, nombre, telf);
-        this.cargo = cargo;
+        this.calificacion = calificacion;
     }
 
-    public String getCargo() {
-        return cargo;
+    public double getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(double calificacion) {
+        this.calificacion = calificacion;
     }
 
     @Override
     public String toString() {
-        return "Empleado -> [" + super.toString() + ", Cargo: " + cargo + "]";
+        return "Repartidor " + super.toString() + ", Calificación: " + calificacion;
     }
 }
 

@@ -1,5 +1,5 @@
 public class Personas {
-
+        //
         protected String id;
         protected String nombre;
         protected String telf;
@@ -27,4 +27,3 @@ public class Personas {
             return "ID: " + id + ", Nombre: " + nombre + ", Tel: " + telf;
         }
     }
-
