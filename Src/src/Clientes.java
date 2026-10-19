@@ -12,6 +12,10 @@ public class Clientes extends Personas {
             return direccionEntrega;
         }
 
+        public String getMail() {
+            return mail;
+        }
+
         @Override
         public String toString() {
             return "Cliente " + super.toString() + ", Dirección: " + direccionEntrega;
