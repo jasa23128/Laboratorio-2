@@ -1,44 +1,37 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Collection;
+import java.util.Optional;
 
 public class GestorClientes {
-    private final Map<Integer, Clientes> clientes;
 
-    public GestorClientes() {
-        this.clientes = new HashMap<>();
-    }
+    // Corregido: solo se pasa el tipo de la clave (Integer) y el tipo del objeto (Clientes)
+    private final GuardadorGenerico<Integer, Clientes> repositorio = new GuardadorGenerico<>();
 
-    public boolean registrarOActualizarCliente(Clientes cliente) {
-        if (cliente == null) {
-            throw new IllegalArgumentException("El cliente no puede ser nulo.");
-        }
+    public void registrarOActualizar(Clientes cliente) {
+        if (cliente == null || cliente.getId_cliente() == 0) return;
 
         int documento = cliente.getId_cliente();
 
-        if (clientes.containsKey(documento)) {
-            Clientes existente = clientes.get(documento);
-            existente.setNombre(cliente.getNombre());
-            existente.setTelf(cliente.getTelf());
-            existente.setDireccionEntrega(cliente.getDireccionEntrega());
-            existente.setMail(cliente.getMail());
-            return false; // Ya existía y se actualizó
-        }
+        // Verificamos si ya está guardado usando el repositorio genérico
+        Optional<Clientes> existente = repositorio.buscarPorId(documento);
 
-        clientes.put(documento, cliente);
-        return true;
+        if (existente.isPresent()) {
+            // Si ya existía, actualizamos sus datos de contacto
+            Clientes c = existente.get();
+            c.setNombre(cliente.getNombre());
+            c.setTelf(cliente.getTelf());
+            c.setDireccionEntrega(cliente.getDireccionEntrega());
+            c.setMail(cliente.getMail());
+        } else {
+            // Si es completamente nuevo, lo guardamos
+            repositorio.guardar(documento, cliente);
+        }
     }
 
     public Optional<Clientes> buscarPorDocumento(int documento) {
-        return Optional.ofNullable(clientes.get(documento));
+        return repositorio.buscarPorId(documento);
     }
 
     public Collection<Clientes> obtenerTodos() {
-        return clientes.values();
-    }
-
-    public int cantidadClientes() {
-        return clientes.size();
+        return repositorio.obtenerTodos();
     }
 }
