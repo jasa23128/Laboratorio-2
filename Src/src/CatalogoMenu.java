@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CatalogoMenu {
-    // Reutilizamos el GuardadorGenerico que creamos (Clave: Integer, Valor: Producto)
+
     private final GuardadorGenerico<Integer, Producto> repositorio = new GuardadorGenerico<>();
 
     public void agregarProducto(Producto producto) {
