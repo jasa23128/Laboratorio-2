@@ -2,22 +2,18 @@
 import java.util.Objects;
 
 public abstract class Producto implements Comparable<Producto> {
-
-    private final String id_producto;
+    private final int id_producto;
     private final String nombre_producto;
 
-    public Producto(String id_producto, String nombre_producto){
-        if(id_producto == null || id_producto.isBlank()){
-            throw new IllegalArgumentException("El ID no puede estar vacio.");
-        }
-        if (nombre_producto == null || id_producto.isBlank()) {
+    public Producto(int id_producto, String nombre_producto) {
+        if (nombre_producto == null || nombre_producto.isBlank()) {
             throw new IllegalArgumentException("El nombre del producto no puede estar vacio.");
         }
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
     }
 
-    public String getId_producto() {
+    public int getId_producto() {
         return id_producto;
     }
 
@@ -27,28 +23,28 @@ public abstract class Producto implements Comparable<Producto> {
 
     public abstract Double getPrecio();
 
-    public int compareTo(Producto otro){
+    @Override
+    public int compareTo(Producto otro) {
         return this.nombre_producto.compareToIgnoreCase(otro.nombre_producto);
     }
-//ola
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return Objects.equals(id_producto, producto.id_producto);
+        return id_producto == producto.id_producto;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId_producto());
+        return Objects.hash(id_producto);
     }
 
     @Override
     public String toString() {
-        return "Producto{" +
-                "id_producto='" + id_producto + '\'' +
-                ", nombre_producto='" + nombre_producto + '\'' +
-                '}';
+        return "Producto{id=" + id_producto + ", nombre='" + nombre_producto + "'}";
     }
 }
+
+
