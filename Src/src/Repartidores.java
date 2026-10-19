@@ -1,14 +1,14 @@
 import java.util.Objects;
 
-public class Repartidores extends Personas {
-    private static int contadorId = 1; // Contador independiente para repartidores
+public class Repartidores extends Personas  {
+    private static int contadorId = 1;
     private int id_repartidor;
     private double calificacion;
 
-    public Repartidores(String nombre, String telf, double calificacion) {
+    public Repartidores(String nombre, int telf) {
         super(nombre, telf);
-        this.id_repartidor = contadorId++; // Autoincremental
-        this.calificacion = calificacion;
+        this.id_repartidor = contadorId++;
+        this.calificacion = 0.0;
     }
 
     public int getId_repartidor() {
@@ -40,5 +40,10 @@ public class Repartidores extends Personas {
     public String toString() {
         return "Repartidor [ID: " + id_repartidor + super.toString() + ", Calificación: " + calificacion + "]";
     }
+    @Override
+    public void actualizar(Pedido pedido, String nuevoEstado){
+        System.out.println("Repartidor: " + nombre + "El Estado del producto es: "+ nuevoEstado);
+    }
+
 }
 

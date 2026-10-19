@@ -1,8 +1,8 @@
-public class Personas {
+public class Personas implements ObservadorPedido{
     protected String nombre;
-    protected String telf;
+    protected int telf;
 
-    public Personas(String nombre, String telf) {
+    public Personas(String nombre, int telf) {
         this.nombre = nombre;
         this.telf = telf;
     }
@@ -15,16 +15,21 @@ public class Personas {
         this.nombre = nombre;
     }
 
-    public String getTelf() {
+    public int getTelf() {
         return telf;
     }
 
-    public void setTelf(String telf) {
+    public void setTelf(int telf) {
         this.telf = telf;
     }
 
     @Override
     public String toString() {
         return ", Nombre: " + nombre + ", Tel: " + telf;
+    }
+
+    @Override
+    public void actualizar(Pedido pedido, String nuevoEstado) {
+
     }
 }

@@ -7,7 +7,7 @@ public class Clientes extends Personas {
     private String direccionEntrega;
 
     // Ya no se pide el ID en el constructor, se genera solito
-    public Clientes(String nombre, String telf, String direccionEntrega, String mail) {
+    public Clientes(String nombre, int telf, String direccionEntrega, String mail) {
         super(nombre, telf);
         this.id_cliente = contadorId++; // Asigna el número y luego incrementa en 1
         this.direccionEntrega = direccionEntrega;
