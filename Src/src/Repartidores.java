@@ -1,19 +1,18 @@
+import java.util.Objects;
+
 public class Repartidores extends Personas {
+    private static int contadorId = 1; // Contador independiente para repartidores
+    private int id_repartidor;
     private double calificacion;
-    private int id_rept;
-    public Repartidores(int id_rept, String nombre, String telf, double calificacion) {
+
+    public Repartidores(String nombre, String telf, double calificacion) {
         super(nombre, telf);
+        this.id_repartidor = contadorId++; // Autoincremental
         this.calificacion = calificacion;
-        this.id_rept = id_rept;
-
     }
 
-    public int getId_rept() {
-        return id_rept;
-    }
-
-    public void setId_rept(int id_rept) {
-        this.id_rept = id_rept;
+    public int getId_repartidor() {
+        return id_repartidor;
     }
 
     public double getCalificacion() {
@@ -25,8 +24,21 @@ public class Repartidores extends Personas {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Repartidores that = (Repartidores) o;
+        return id_repartidor == that.id_repartidor;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_repartidor);
+    }
+
+    @Override
     public String toString() {
-        return "Repartidor " + ", ID: " + id_rept + super.toString() + ", Calificación: " + calificacion;
+        return "Repartidor [ID: " + id_repartidor + super.toString() + ", Calificación: " + calificacion + "]";
     }
 }
 

@@ -1,23 +1,21 @@
 import java.util.Objects;
 
 public class Clientes extends Personas {
-    private String id_cliente; // Su propio ID independiente
+    private static int contadorId = 1; // Contador estático que sube solo
+    private int id_cliente;
     private String mail;
     private String direccionEntrega;
 
-    public Clientes(String id_cliente, String nombre, String telf, String direccionEntrega, String mail) {
-        super(nombre, telf); // Solo pasa nombre y telf al padre
-        this.id_cliente = id_cliente;
+    // Ya no se pide el ID en el constructor, se genera solito
+    public Clientes(String nombre, String telf, String direccionEntrega, String mail) {
+        super(nombre, telf);
+        this.id_cliente = contadorId++; // Asigna el número y luego incrementa en 1
         this.direccionEntrega = direccionEntrega;
         this.mail = mail;
     }
 
-    public String getId_cliente() {
+    public int getId_cliente() {
         return id_cliente;
-    }
-
-    public void setId_cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
     }
 
     public String getDireccionEntrega() {
@@ -41,7 +39,7 @@ public class Clientes extends Personas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Clientes cliente = (Clientes) o;
-        return Objects.equals(id_cliente, cliente.id_cliente);
+        return id_cliente == cliente.id_cliente;
     }
 
     @Override
