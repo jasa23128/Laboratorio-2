@@ -30,7 +30,7 @@ public abstract class Producto implements Comparable<Producto> {
     public int compareTo(Producto otro){
         return this.nombre_producto.compareToIgnoreCase(otro.nombre_producto);
     }
-
+//ola
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
