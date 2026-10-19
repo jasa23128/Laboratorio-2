@@ -28,7 +28,7 @@ public abstract class Producto implements Comparable<Producto> {
     public abstract Double getPrecio();
 
     public int compareTo(Producto otro){
-        return this.id_producto.compareToIgnoreCase(nombre_producto);
+        return this.nombre_producto.compareToIgnoreCase(nombre_producto);
     }
 
     @Override
