@@ -1,9 +1,19 @@
 public class Repartidores extends Personas {
     private double calificacion;
-
-    public Repartidores(String id, String nombre, String telf, double calificacion) {
-        super(id, nombre, telf);
+    private int id_rept;
+    public Repartidores(int id_rept, String nombre, String telf, double calificacion) {
+        super(nombre, telf);
         this.calificacion = calificacion;
+        this.id_rept = id_rept;
+
+    }
+
+    public int getId_rept() {
+        return id_rept;
+    }
+
+    public void setId_rept(int id_rept) {
+        this.id_rept = id_rept;
     }
 
     public double getCalificacion() {
@@ -16,7 +26,7 @@ public class Repartidores extends Personas {
 
     @Override
     public String toString() {
-        return "Repartidor " + super.toString() + ", Calificación: " + calificacion;
+        return "Repartidor " + ", ID: " + id_rept + super.toString() + ", Calificación: " + calificacion;
     }
 }
 
