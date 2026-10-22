@@ -1,6 +1,5 @@
 import java.util.*;
 
-// <K, T> -> K es el tipo de la clave (String, Integer, etc.) y T es el objeto
 public class GuardadorGenerico<K, T> {
     private final Map<K, T> elementos = new HashMap<>();
 

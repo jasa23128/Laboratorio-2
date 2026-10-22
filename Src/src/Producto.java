@@ -1,4 +1,3 @@
-
 import java.util.Objects;
 
 public abstract class Producto implements Comparable<Producto> {
@@ -13,13 +12,8 @@ public abstract class Producto implements Comparable<Producto> {
         this.nombre_producto = nombre_producto;
     }
 
-    public int getId_producto() {
-        return id_producto;
-    }
-
-    public String getNombre_producto() {
-        return nombre_producto;
-    }
+    public int getId_producto() { return id_producto; }
+    public String getNombre_producto() { return nombre_producto; }
 
     public abstract Double getPrecio();
 
@@ -46,5 +40,3 @@ public abstract class Producto implements Comparable<Producto> {
         return "Producto{id=" + id_producto + ", nombre='" + nombre_producto + "'}";
     }
 }
-
-

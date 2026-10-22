@@ -10,13 +10,8 @@ public class Platos extends Producto {
         this.esVegano = esVegano;
     }
 
-    public CategoriaPlato getCategoria() {
-        return categoria;
-    }
-
-    public boolean isEsVegano() {
-        return esVegano;
-    }
+    public CategoriaPlato getCategoria() { return categoria; }
+    public boolean isEsVegano() { return esVegano; }
 
     @Override
     public Double getPrecio() {
